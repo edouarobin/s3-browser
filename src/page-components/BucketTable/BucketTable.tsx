@@ -51,7 +51,7 @@ export const BucketTable: FunctionComponent<BucketTableProps> = ({ keyOrPrefixLi
           return (
             <a
               target="_blank"
-              href={`${row.baseUrl}/${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}/${keyOrPrefix}`}
+              href={row.signedURL || `${row.baseUrl}/${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}/${keyOrPrefix}`}
               rel="noopener noreferrer"
             >
               {keyOrPrefix.split('/').pop()}
