@@ -56,6 +56,7 @@ export const BucketTable: FunctionComponent<BucketTableProps> = ({ keyOrPrefixLi
 
           return (
             <a
+              key={item.signedURL}
               target="_blank"
               href={item.signedURL}
               rel="noopener noreferrer"
