@@ -45,9 +45,24 @@ export const BucketTable: FunctionComponent<BucketTableProps> = ({ keyOrPrefixLi
             let keyOrPrefix = item.keyOrPrefix.replace(/\/\s*$/, '');
             return <div key={item.keyOrPrefix} style={{ "marginTop": 20 }}><Link href={`/${keyOrPrefix}`}>{`${keyOrPrefix.split('/').pop()}/`}</Link></div>;
           }
-          return <div key={item.signedURL}>
-            <Player firstURL={item.signedURL} muted playbackRate={0.25} width={"100%"} height={800} controls={false} loop />
-          </div>
+
+          const extension = item.keyOrPrefix.split('.').pop();
+
+          if (extension === 'mp4' || extension === 'mp3') {
+            return <div key={item.signedURL}>
+              <Player firstURL={item.signedURL} muted playbackRate={0.25} width={"100%"} height={800} controls={false} loop />
+            </div>
+          }
+
+          return (
+            <a
+              target="_blank"
+              href={item.signedURL}
+              rel="noopener noreferrer"
+            >
+              {item.keyOrPrefix}
+            </a>
+          )
         })}
       </div>
     </>
